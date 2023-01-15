@@ -1,9 +1,11 @@
 <script>
 import { CBox, CLink, CIcon } from '@chakra-ui/vue'
-
+import { mapGetters } from 'vuex';
 export default {
   name: 'NavbarPopular',
-
+  computed:{
+    ...mapGetters(["categories"])
+  },  
   components: {
     CBox,
     CLink,
@@ -27,116 +29,14 @@ export default {
         :font-size="['12px', '12px', '12px', '14px', '14px', '16px']"
         line-height="24px"
         color="color.InputColor"
+        v-for="(cat, id) in categories"
+        :key="id"
         ><CLink
           as="router-link"
-          :to="localePath({ name: 'category', params: { category: 'phones' } })"
+          :to="localePath({ name: 'category', params: { category: cat._id } })"
           :hover="{ color: 'color.BorderColor', textDecoration: false }"
           :focus="false"
-          >{{ $t('category_phones') }}</CLink
-        ></CBox
-      >
-      <CBox
-        as="li"
-        :font-size="['12px', '12px', '12px', '14px', '14px', '16px']"
-        line-height="24px"
-        color="color.InputColor"
-        ><CLink
-          as="router-link"
-          to="#"
-          :_hover="{ color: 'color.BorderColor', textDecoration: false }"
-          :_focus="false"
-          >{{ $t('category_tablets') }}</CLink
-        ></CBox
-      >
-      <CBox
-        as="li"
-        :font-size="['12px', '12px', '12px', '14px', '14px', '16px']"
-        line-height="24px"
-        color="color.InputColor"
-        ><CLink
-          as="router-link"
-          to="#"
-          :_hover="{ color: 'color.BorderColor', textDecoration: false }"
-          :_focus="false"
-          >{{ $t('category_tv') }}</CLink
-        ></CBox
-      >
-      <CBox
-        as="li"
-        :font-size="['12px', '12px', '12px', '14px', '14px', '16px']"
-        line-height="24px"
-        color="color.InputColor"
-        ><CLink
-          as="router-link"
-          to="#"
-          :_hover="{ color: 'color.BorderColor', textDecoration: false }"
-          :_focus="false"
-          >{{ $t('category_laptops') }}</CLink
-        ></CBox
-      >
-      <CBox
-        as="li"
-        :font-size="['12px', '12px', '12px', '14px', '14px', '16px']"
-        line-height="24px"
-        color="color.InputColor"
-        ><CLink
-          as="router-link"
-          to="#"
-          :_hover="{ color: 'color.BorderColor', textDecoration: false }"
-          :_focus="false"
-          >{{ $t('smart_watches') }}</CLink
-        ></CBox
-      >
-      <CBox
-        as="li"
-        :font-size="['12px', '12px', '12px', '14px', '14px', '16px']"
-        line-height="24px"
-        color="color.InputColor"
-        ><CLink
-          as="router-link"
-          to="#"
-          :_hover="{ color: 'color.BorderColor', textDecoration: false }"
-          :_focus="false"
-          >{{ $t('category_ac') }}</CLink
-        ></CBox
-      >
-      <CBox
-        as="li"
-        :font-size="['12px', '12px', '12px', '14px', '14px', '16px']"
-        line-height="24px"
-        color="color.InputColor"
-        ><CLink
-          as="router-link"
-          to="#"
-          :_hover="{ color: 'color.BorderColor', textDecoration: false }"
-          :_focus="false"
-          >{{ $t('category_fridge') }}</CLink
-        ></CBox
-      >
-      <CBox
-        as="li"
-        :font-size="['12px', '12px', '12px', '14px', '14px', '16px']"
-        line-height="24px"
-        color="color.InputColor"
-        ><CLink
-          as="router-link"
-          to="#"
-          :_hover="{ color: 'color.BorderColor', textDecoration: false }"
-          :_focus="false"
-          >{{ $t('category_monitors') }}</CLink
-        ></CBox
-      >
-      <CBox
-        as="li"
-        :font-size="['12px', '12px', '12px', '14px', '14px', '16px']"
-        line-height="24px"
-        color="color.InputColor"
-        ><CLink
-          as="router-link"
-          to="#"
-          :_hover="{ color: 'color.BorderColor', textDecoration: false }"
-          :_focus="false"
-          >{{ $t('category_monitors') }}</CLink
+          >{{ cat.name }}</CLink
         ></CBox
       >
       <CBox

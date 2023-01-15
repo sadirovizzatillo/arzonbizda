@@ -36,7 +36,8 @@ export default {
 
   methods: {
     openProductPage(item) {
-      this.$store.dispatch("setProducts", item)
+      this.$store.dispatch("setProducts", item.id)
+      this.$store.dispatch("setAdviceProducts", item.category._id)
       this.$router.push(
         this.localePath({
           name: 'products-id',
@@ -74,7 +75,7 @@ export default {
         <CBox
           :pt="['8px', '12px', '14px', '18px', '20px', '24px']"
           cursor="pointer"
-          @click="openProductPage(item.id)"
+          @click="openProductPage(item)"
         >
           <CHeading
             as="h2"

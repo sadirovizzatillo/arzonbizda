@@ -10,7 +10,7 @@ export default {
     CText,
   },
 
-  // props: ['item'],
+  props: ['item'],
 }
 </script>
 
@@ -23,7 +23,7 @@ export default {
       justify="center"
     >
       <c-image
-        :src="`https://source.unsplash.com/random/700x700?sig=${7}`"
+        :src="require(`@/assets/img/${item}.png`)"
         :width="['52px', '62px', '72px', '83px', '94px', '104px']"
         h="auto"
       />
@@ -34,7 +34,7 @@ export default {
         color="color.TextColor1"
         text-align="center"
         mt="16px"
-        >Gucci</c-text
+        >{{ item }}</c-text
       >
     </c-flex>
   </CThemeProvider>

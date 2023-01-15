@@ -69,7 +69,7 @@ export default {
           height="100%"
           object-fit="contain"
           position="absolute"
-          :src="item.images[0].src"
+          :src="`https://source.unsplash.com/random/700x700?sig=${8}`"
         ></CImage>
       </CBox>
 
@@ -95,7 +95,7 @@ export default {
           font-weight="400"
           :line-height="['15px', '20px', '25px', '30px', '35px', '40px']"
         >
-          {{ item.name }}</CHeading
+          {{ item.title }}</CHeading
         >
 
         <CBox
@@ -155,7 +155,7 @@ export default {
       >
       <CBox display="flex" aligin-items="center" mt="8px">
         <CLink
-          :href="item.link"
+          :href="'www.kun.uz'"
           is-external
           :display="['none', 'none', 'none', 'none', 'block', 'block']"
           color="#FFF"

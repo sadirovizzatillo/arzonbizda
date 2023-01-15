@@ -16,7 +16,9 @@ export default {
   },
 
   data() {
-    return {}
+    return {
+      imgs:["apple", "acer", "asus", "dell", "HP", "LG", "lenovo", "midea", "samsung", "sony", "versace", "xiaomi"]
+    }
   },
 
   computed: {
@@ -50,7 +52,7 @@ export default {
         justify-content="center"
       >
         <CBox
-          v-for="(item, idx) in 8"
+          v-for="(item, idx) in imgs"
           :key="idx"
           class="brands__component"
         >

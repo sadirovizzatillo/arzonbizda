@@ -7,7 +7,6 @@ import 'aos/dist/aos.css'
 
 export default {
   name: 'UserComponent',
-
   components: {
     CategoryMain,
     BreadCumb,
@@ -20,6 +19,7 @@ export default {
   },
 
   mounted() {
+    console.log(this.$route)
     this.$store.dispatch('addBreadcumbs', this.route)
     AOS.init({})
   },

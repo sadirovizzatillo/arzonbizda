@@ -34,9 +34,6 @@ export default {
     >
       <TabsproductItems v-for="(item, id) in products" :key="id" :item="item" />
       <div
-        v-if="
-          $store.state.has_content === 'no_content' && !$store.state.loading
-        "
         data-aos="fade-up"
       >
         Информация не найдена

@@ -105,7 +105,9 @@ export const state = () => {
   return{
     product:[],
     products:[],
-    isBadge:[]
+    isBadge:[],
+    relatedproducts:null,
+    categories:[]
   }
 }
 
@@ -121,6 +123,12 @@ export const mutations = {
       state.isBadge.push(payload)
     }
   },
+  SET_RELATED_ADVICE_PRODUCT(state, product){
+    state.relatedproducts = product
+  },
+  SET_CATEGORIES(state, categories){
+    state.categories = categories
+  }
 }
 
 export const actions = {
@@ -143,6 +151,26 @@ export const actions = {
     }catch(err){
       console.log(err)
     }
+  },
+  async setAdviceProducts({ commit }, id){
+    try{
+      const { data } = await this.$axios.get(`/products/related/${id}`);
+      if(data.success){
+        await commit("SET_RELATED_ADVICE_PRODUCT", data.relatedproducts)
+      }
+    }catch(err){
+      console.log(err)
+    }
+  },
+  async getCategories({ commit }){
+    try{
+      const { data } = await this.$axios.get("/categories/all");
+      if(data.success){
+        await commit("SET_CATEGORIES", data.categories)
+      } 
+    }catch(err){
+      console.log(err)
+    }
   }
 }
 
@@ -155,5 +183,11 @@ export const getters = {
   },
   isBadgeLength: (state) => {
     return state.isBadge
+  },
+  relatedProducts: (state) => {
+    return state.relatedproducts
+  },
+  categories: (state) => {
+    return state.categories
   }
 }
