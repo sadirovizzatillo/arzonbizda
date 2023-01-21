@@ -112,6 +112,7 @@ export default {
    
   mounted() {
     this.$store.dispatch("getProducts")
+    this.$store.dispatch("getBlogs")
     this.$store.dispatch("getCategories")
     AOS.init()
   },

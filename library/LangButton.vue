@@ -13,7 +13,7 @@ export default {
   },
   data() {
     return {
-      loacales: '',
+      loacales: 'ru',
     }
   },
   watch: {
@@ -36,10 +36,9 @@ export default {
           :_focus="false"
           border="LangBorder"
           color="color.InputColor"
-          placeholder="Рус"
           h="56px"
         >
-          <option value="ru">Ru</option>
+          <option value="ru" selected>Ru</option>
           <option value="uz">Uzb</option>
           <option value="en">Eng</option>
         </c-select>

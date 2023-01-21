@@ -3,7 +3,7 @@ import { CBox, CImage, CHeading, CStack, CFlex, CIcon } from '@chakra-ui/vue'
 
 import SingleStar from '~/library/SingleStar.vue'
 
-import priceSpacer from '@/helpers/price-spacer'
+// import priceSpacer from '@/helpers/price-spacer'
 
 export default {
   name: 'PopularProduct',
@@ -18,13 +18,13 @@ export default {
     SingleStar,
   },
 
-  mixins: [
-    {
-      methods: {
-        priceSpacer,
-      },
-    },
-  ],
+  // mixins: [
+  //   {
+  //     methods: {
+  //       priceSpacer,
+  //     },
+  //   },
+  // ],
 
   props: {
     item: {
@@ -81,7 +81,7 @@ export default {
             as="h2"
             :font-size="['12px', '14px', '16px', '18px', '20px', '24px']"
             mb="8px"
-            >{{ $t('from') }} {{ priceSpacer(item.price.toString()) }}
+            >{{ $t('from') }} {{ item.price }}
             {{ $t('currency') }}</CHeading
           >
           <CBox

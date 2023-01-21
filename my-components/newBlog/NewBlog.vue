@@ -1,5 +1,6 @@
 <script>
 import { CThemeProvider, CBox, CSimpleGrid, CHeading } from '@chakra-ui/vue'
+import { mapGetters } from 'vuex'
 import NewBlogcard from '@/my-components/newBlog/NewBlogcard.vue'
 
 export default {
@@ -10,7 +11,9 @@ export default {
     CSimpleGrid,
     CHeading,
   },
-  
+  computed:{
+    ...mapGetters(["blogs"])
+  },
   data() {
     return {
       route: this.$route,
@@ -74,7 +77,7 @@ export default {
                 :spacing="['10px', '12px', '15px', '20px', '25px', '30px']"
                 >
                 <CBox
-                v-for="img in 4"
+                v-for="img in blogs"
                 :key="img"
                 width="100%"
                 class="products__div"
@@ -82,7 +85,7 @@ export default {
                 align-items="center"
                 display="flex"
                 >
-                <NewBlogcard :blog="blogList" />
+                <NewBlogcard :blog="img" />
               </CBox>
             </CSimpleGrid>
           </nuxt-link>

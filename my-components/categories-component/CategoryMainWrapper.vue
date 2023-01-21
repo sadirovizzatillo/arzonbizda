@@ -7,8 +7,8 @@ import {
   CBox,
   CSelect,
 } from '@chakra-ui/vue'
+import { mapGetters } from 'vuex'
 import PopularProducts from '../popular-products/popularProducts.vue'
-
 export default {
   name: 'CategoryMainWrapper',
   components: {
@@ -30,6 +30,7 @@ export default {
   },
 
   computed: {
+    ...mapGetters(["relatedCategoryProducts"]),
     item() {
       return this.selectedItem
     },
@@ -97,6 +98,7 @@ export default {
       :class="{ showHide: switched }"
       title="Категория товаров"
       :columns="columns"
+      :products="relatedCategoryProducts"
     />
   </div>
 </template>

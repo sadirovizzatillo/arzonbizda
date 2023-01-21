@@ -6,13 +6,13 @@ export default {
     CImage,
     CText,
   },
-  // props: {
-  //   blog: {
-  //     type: Object || Array,
-  //     default: null,
-  //     required: true,
-  //   },
-  // },
+  props: {
+    blog: {
+      type: Object || Array,
+      default: null,
+      required: true,
+    },
+  },
 }
 </script>
 
@@ -29,10 +29,9 @@ export default {
         width="100%"
         height="100%"
         object-fit="cover"
-        :src="`https://source.unsplash.com/random/700x700?sig=${1}s`"
+        :src="`http://localhost:4000/` + blog.blogImage"
       ></CImage
     ></CBox>
-
     <CBox>
       <CText
         class="series2"
@@ -43,7 +42,7 @@ export default {
         font-family="Yandex Sans Display"
         font-weight="700"
         :line-height="['9px', '18px', '24px', '28px', '28px', '28px']"
-        >Lorem ipsum dolor sit, amet consectetur adipisicing elit. Consequatur, consectetur suscipit optio voluptates distinctio excepturi.</CText
+        > {{ blog.text.slice(0,30) }}.</CText
       >
     </CBox>
   </CBox>

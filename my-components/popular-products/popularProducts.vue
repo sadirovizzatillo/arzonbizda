@@ -22,8 +22,7 @@ export default {
       default: null,
     },
     products:{
-      type:Object,
-      required:true
+      type:Object || Array,
     },
     columns: {
       type: Array,

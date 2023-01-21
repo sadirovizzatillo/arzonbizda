@@ -19,8 +19,9 @@ export default {
   },
 
   mounted() {
-    console.log(this.$route)
-    this.$store.dispatch('addBreadcumbs', this.route)
+    const route = this.$route.params.category
+    this.$store.dispatch("getRelatedCategories", route)
+    // this.$store.dispatch('addBreadcumbs', this.route)
     AOS.init({})
   },
 }

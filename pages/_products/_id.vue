@@ -50,11 +50,7 @@ export default {
 </script>
 
 <template>
-  <div>
-    {{ $store.state.product }}
-
-    {{ products }}
-    <!-- <BreadCumb /> -->
+  <div>    <!-- <BreadCumb /> -->
     <LoaderComponent />
     <div class="product__page" data-aos="fade-up" data-aos-duration="1000">
       <ProductSlider />

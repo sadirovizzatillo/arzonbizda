@@ -56,6 +56,7 @@ export default {
 .category__main {
   display: grid;
   grid-template-columns: 1fr 3fr;
+  gap: 20px;
 }
 .showHide {
   grid-template-columns: 1fr !important;

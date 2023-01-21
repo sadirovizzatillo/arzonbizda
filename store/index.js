@@ -107,7 +107,9 @@ export const state = () => {
     products:[],
     isBadge:[],
     relatedproducts:null,
-    categories:[]
+    categories:[],
+    relatedCatgoryProduct:[],
+    blogs:null
   }
 }
 
@@ -128,6 +130,12 @@ export const mutations = {
   },
   SET_CATEGORIES(state, categories){
     state.categories = categories
+  },
+  SET_RELATED_PRODUCTS(state, relatedCatgoryProduct){
+    state.relatedCatgoryProduct = relatedCatgoryProduct
+  },
+  SET_BLOGS(state, blogs){
+    state.blogs = blogs
   }
 }
 
@@ -138,6 +146,16 @@ export const actions = {
   async setProducts({commit}, product){
     try{
       await commit("SET_ONE_PRODUCT", product)
+    }catch(err){
+      console.log(err)
+    }
+  },
+  async getBlogs({ commit }){
+    try{
+      const { data } = await this.$axios.get("/blog")
+      if(data.success){
+        await commit("SET_BLOGS", data.blog)
+      }
     }catch(err){
       console.log(err)
     }
@@ -157,6 +175,16 @@ export const actions = {
       const { data } = await this.$axios.get(`/products/related/${id}`);
       if(data.success){
         await commit("SET_RELATED_ADVICE_PRODUCT", data.relatedproducts)
+      }
+    }catch(err){
+      console.log(err)
+    }
+  },
+  async getRelatedCategories({ commit }, route){
+    try{
+      const { data } = await this.$axios.get(`/categories/related/${route}`)
+      if(data.success){
+       await commit("SET_RELATED_PRODUCTS", data.products)
       }
     }catch(err){
       console.log(err)
@@ -189,5 +217,11 @@ export const getters = {
   },
   categories: (state) => {
     return state.categories
+  },
+  relatedCategoryProducts: (state) => {
+    return state.relatedCatgoryProduct
+  },
+  blogs: (state) => {
+    return state.blogs
   }
 }
