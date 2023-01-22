@@ -109,7 +109,8 @@ export const state = () => {
     relatedproducts:null,
     categories:[],
     relatedCatgoryProduct:[],
-    blogs:null
+    blogs:null,
+    singleBlog:null
   }
 }
 
@@ -127,6 +128,9 @@ export const mutations = {
   },
   SET_RELATED_ADVICE_PRODUCT(state, product){
     state.relatedproducts = product
+  },
+  SET_SINGLE_BLOG(state, blog){
+    state.singleBlog = blog
   },
   SET_CATEGORIES(state, categories){
     state.categories = categories
@@ -223,5 +227,8 @@ export const getters = {
   },
   blogs: (state) => {
     return state.blogs
+  },
+  singleBlog: (state) => {
+    return state.singleBlog
   }
 }

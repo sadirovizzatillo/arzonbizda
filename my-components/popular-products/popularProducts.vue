@@ -22,7 +22,7 @@ export default {
       default: null,
     },
     products:{
-      type:Object || Array,
+      type: Array || Object,
     },
     columns: {
       type: Array,

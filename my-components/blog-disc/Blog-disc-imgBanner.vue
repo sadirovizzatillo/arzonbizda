@@ -6,13 +6,12 @@ export default {
 
   components: { CBox, CImage },
 
-  // props: {
-  //   blog: {
-  //     type: Object || Array,
-  //     default: null,
-  //     required: true,
-  //   },
-  // },
+  props: {
+    blog: {
+      type: Object || Array,
+      default: null,
+    },
+  },
 }
 </script>
 
@@ -25,7 +24,7 @@ export default {
   >
     <c-image
       border-radius="12px"
-      :src="`https://source.unsplash.com/random/700x700?sig=${9}`"
+      :src="`http://localhost:4000/` + blog.image"
       position="absolute"
       width="100%"
       height="100%"

@@ -8,7 +8,6 @@ export default {
     blog: {
       type: Object || Array,
       default: null,
-      required: true,
     },
   },
 }
