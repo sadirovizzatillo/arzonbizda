@@ -1,8 +1,8 @@
 <script>
+import { mapGetters } from 'vuex'
 import { CThemeProvider, CBox, CButton } from '@chakra-ui/vue'
 import TabInformation from './TabSectionBox/TabInformation.vue'
 import TabComment from './TabSectionBox/TabComment.vue'
-
 export default {
   components: {
     CThemeProvider,
@@ -12,13 +12,13 @@ export default {
     TabComment,
   },
 
-  props: {
-    reviews: {
-      type: Object || Array,
-      default: null,
-      required: true,
-    },
-  },
+  // props: {
+  //   reviews: {
+  //     type: Object || Array,
+  //     default: null,
+  //     required: true,
+  //   },
+  // },
 
   data() {
     return {
@@ -56,6 +56,10 @@ export default {
       ],
     }
   },
+  computed:{
+    ...mapGetters(["singleReviews"])
+  },
+
 }
 </script>
 
@@ -88,8 +92,7 @@ export default {
       <CBox>
         <TabComment />
       </CBox>
-
-      <CBox v-for="item in TabInformation" :key="item.id">
+      <CBox v-for="(item, id) in singleReviews" :key="id">
         <TabInformation :item="item" />
       </CBox>
     </CBox>

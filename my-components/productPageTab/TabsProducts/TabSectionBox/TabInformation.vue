@@ -51,7 +51,7 @@ export default {
           font-family="Yandex Sans Display"
           font-weight="700"
           :line-height="['14px', '16px', '18px', '20px', '22px', '24px']"
-          >{{ item.fullname }}</CText
+          >{{ item.user_id.name }}</CText
         >
         <CText
           :ml="['0px', '0px', '0px', '20px', '20px', '20px']"
@@ -60,7 +60,7 @@ export default {
           font-family="Yandex Sans Display"
           font-weight="400"
           line-height="24px"
-          >{{ item.address }}</CText
+          >Yubusobod</CText
         >
       </CBox>
 
@@ -71,7 +71,7 @@ export default {
         font-family="Yandex Sans Display"
         font-weight="400"
         line-height="24px"
-        >{{ item.time }}</CText
+        >{{ item.date }}</CText
       >
     </CBox>
 
@@ -93,7 +93,7 @@ export default {
           font-family="Yandex Sans Display"
           font-weight="400"
           line-height="24px"
-          >4</CText
+          >{{ item.rate }}</CText
         >
       </CBox>
     </CBox>
@@ -118,7 +118,7 @@ export default {
         font-weight="400"
         :line-height="['14px', '12px', '14px', '15px', '16px', '24px']"
       >
-        {{ item.attention }}
+        {{ item.text }}
       </CText>
 
       <CText
@@ -129,7 +129,7 @@ export default {
         font-weight="400"
         :line-height="['14px', '16px', '18px', '20px', '22px', '24px']"
       >
-        {{ item.delivery__time }}</CText
+        {{ item.date }}</CText
       >
     </CBox>
   </CBox>

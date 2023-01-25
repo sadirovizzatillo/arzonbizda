@@ -11,7 +11,7 @@ export default {
   props: {
     characterics: {
       type: Array || Object,
-      required: true,
+      // required: true,
     },
   },
   data() {

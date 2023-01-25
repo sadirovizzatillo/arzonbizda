@@ -99,8 +99,6 @@
 //     ctx.commit('SET_HAS_CONTENT', !sendData.length ? 'no_content' : 'content')
 //   },
 // }
-
-
 export const state = () => {
   return{
     product:[],
@@ -110,7 +108,8 @@ export const state = () => {
     categories:[],
     relatedCatgoryProduct:[],
     blogs:null,
-    singleBlog:null
+    singleBlog:null,
+    reviews:null
   }
 }
 
@@ -140,6 +139,9 @@ export const mutations = {
   },
   SET_BLOGS(state, blogs){
     state.blogs = blogs
+  },
+  SET_SINGLE_REVIEWS(state, review){
+    state.reviews = review
   }
 }
 
@@ -184,6 +186,17 @@ export const actions = {
       console.log(err)
     }
   },
+  async login(_, form){
+    try{
+      const { data } = await this.$axios.post("/auth/login", form);
+      if(data.success){
+        await localStorage.setItem("user", JSON.stringify(data.user))
+        this.$router.push("/")
+      }
+    }catch(err){
+      console.log(err)
+    }
+  },
   async getRelatedCategories({ commit }, route){
     try{
       const { data } = await this.$axios.get(`/categories/related/${route}`)
@@ -200,6 +213,27 @@ export const actions = {
       if(data.success){
         await commit("SET_CATEGORIES", data.categories)
       } 
+    }catch(err){
+      console.log(err)
+    }
+  },
+  async getSingleProduct({ commit }, id){
+    try{
+      const { data } = await this.$axios.get(`/products/${id}`);
+      if(data.success){
+        await commit("SET_SINGLE_REVIEWS", data.reviews)
+      }
+    }catch(err){
+      console.log(err)
+    }
+  },
+  async submitReview(_, review){
+    try{
+      const { data } = await this.$axios.post("/reviews", review);
+      if(data.success){
+        await _.dispatch("getSingleProduct", review.product_id)
+        return true
+      }
     }catch(err){
       console.log(err)
     }
@@ -230,5 +264,8 @@ export const getters = {
   },
   singleBlog: (state) => {
     return state.singleBlog
+  },
+  singleReviews: (state) => {
+    return state.reviews
   }
 }

@@ -40,6 +40,7 @@ export default {
   mounted() {
     this.route =  this.$route.params.id
     AOS.init({})
+    this.$store.dispatch("getSingleProduct", this.route)
   },
   methods: {
     // storeData() {
